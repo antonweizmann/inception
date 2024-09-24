@@ -4,13 +4,13 @@ volumes:
       driver_opts:
         o: bind
         type: none
-        device: /Users/aweizman/Desktop/inception/wordpress
+        device: /home/aweizman/data/wordpress
   mariadb:
     driver: local
     driver_opts:
       o: bind
       type: none
-      device: /Users/aweizman/Desktop/inception/mariadb
+      device: /home/aweizman/data/mariadb
 
 networks:
   inception:

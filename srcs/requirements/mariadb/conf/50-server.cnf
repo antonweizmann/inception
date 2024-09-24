@@ -15,7 +15,7 @@
 user                    = mysql
 datadir                 = /var/lib/mysql
 port			= 3306
-socket			= /run/mysqld/mysqld.sock
+#socket			= /run/mysqld/mysqld.sock
 
 # Broken reverse DNS slows down connections considerably and name resolve is
 # safe to skip if there are no "host by domain name" access grants
