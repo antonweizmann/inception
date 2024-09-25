@@ -4,12 +4,15 @@ RUN apt update -y && apt upgrade -y && apt install -y nginx && apt install opens
 
 RUN openssl req -x509 -days 365 -newkey rsa:2048 -nodes -out /etc/ssl/private/inception.crt -keyout /etc/ssl/private/inception.key -subj "/C=DE/ST=Baden-Württemberg/L=Heilbronn/O=42/OU=42/CN=aweizman.42.fr/UID=aweizman"
 
-COPY ./conf/default /etc/nginx/sites-available
+COPY ./conf/default /etc/nginx/sites-available/default
 
 #I will now simply add in theDockerfilean order   chmod  to ensure that we will have the rights to what we need.
 
  #  RUN chmod 755 /var/www/html (our main root)
 
 #   RUN chown -R www-data:www-data /var/www/html (the main user)
+
+EXPOSE 443
+
 CMD ["nginx", "-g" , "daemon off;"]
 

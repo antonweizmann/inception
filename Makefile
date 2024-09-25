@@ -9,3 +9,15 @@ prepare:
 
 up:
 	@docker compose -f srcs/docker-compose.yml up --build
+
+down:
+	@docker compose -f srcs/docker-compose.yml down
+
+fclean:
+	@docker compose -f srcs/docker-compose.yml down -v --rmi all --remove-orphans
+	@docker volume prune -f
+	@sudo rm -rf /home/aweizman/data
+
+re: fclean prepare up
+
+.PHONY: all prepare up down fclean re

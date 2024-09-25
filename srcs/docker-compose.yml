@@ -24,7 +24,7 @@ services:
     depends_on:
       - wordpress
     volumes:
-      - wordpress:/var/www/wordpress
+      - wordpress:/var/www/html
     container_name: nginx
     ports:
       - "443:443"
@@ -34,7 +34,7 @@ services:
     depends_on:
       - mariadb
     volumes:
-      - wordpress:/var/www/wordpress
+      - wordpress:/var/www/html
     build: requirements/wordpress/
     container_name: wp-php
     env_file:
