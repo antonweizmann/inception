@@ -21,3 +21,4 @@ wp user create $WP_USER $WP_EMAIL --role=author --user_pass=$WP_PWD --allow-root
 if  [ ! -d "/run/php" ]; then
 	mkdir -p /run/php
 fi
+

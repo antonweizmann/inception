@@ -6,11 +6,9 @@ RUN openssl req -x509 -days 365 -newkey rsa:2048 -nodes -out /etc/ssl/private/in
 
 COPY ./conf/default /etc/nginx/sites-available/default
 
-#I will now simply add in theDockerfilean order   chmod  to ensure that we will have the rights to what we need.
+  RUN chmod 755 /var/www/html 
 
- #  RUN chmod 755 /var/www/html (our main root)
-
-#   RUN chown -R www-data:www-data /var/www/html (the main user)
+   RUN chown -R www-data:www-data /var/www/html 
 
 EXPOSE 443
 
