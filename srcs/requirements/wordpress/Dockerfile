@@ -1,7 +1,7 @@
 from debian:bullseye
 
-RUN apt update -y && apt upgrade -y && apt install -y php-fpm \
-php-mysql \
+RUN apt update -y && apt upgrade -y && apt install -y php7.4-fpm \
+php7.4-mysql \
 mariadb-client \
 wget \ 
 curl \
@@ -17,7 +17,7 @@ RUN mkdir -p /run/php && chown root:root /run/php
 #RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN curl -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
 	chmod +x /usr/local/bin/wp
-COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/.
+COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/.
 
 #RUN chmod +x wp-cli.phar
 #RUN mv wp-cli.phar /usr/local/bin/wp
@@ -25,5 +25,3 @@ COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/.
 COPY ./conf/auto_config.sh /
 RUN chmod +x /auto_config.sh
 ENTRYPOINT ["/auto_config.sh"]
-
-CMD ["php-fpm7.3", "-F"]

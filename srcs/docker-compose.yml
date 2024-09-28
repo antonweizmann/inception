@@ -29,7 +29,7 @@ services:
     ports:
       - "443:443"
     env_file: requirements/.env
-    restart: on-failure
+    restart: always
   wordpress:
     depends_on:
       - mariadb
