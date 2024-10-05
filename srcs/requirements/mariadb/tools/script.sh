@@ -2,7 +2,10 @@
 
 mysqld_safe --skip-networking &
 
-sleep 10
+while ! mysqladmin ping --silent; do
+    echo "Waiting for MariaDB to start..."
+    sleep 5
+done
 
 mysql -e "CREATE DATABASE IF NOT EXISTS \`${SQL_DATABASE}\`;"
 
@@ -14,6 +17,8 @@ mysql -e "GRANT ALL PRIVILEGES ON \`${SQL_DATABASE}\`.* TO \`${SQL_USER}\`@'%' I
 mysql -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${SQL_ROOT_PASSWORD}');"
 
 mysql -e "FLUSH PRIVILEGES;"
+
+sleep 10
 
 mysqladmin -u root -p$SQL_ROOT_PASSWORD shutdown
 
